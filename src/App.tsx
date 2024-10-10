@@ -5,12 +5,12 @@ import "../global.css";
 export default function App() {
   const { colorScheme } = useColorScheme();
   const style =
-    colorScheme === "dark"
-      ? vars({ "--background": "#000000" })
-      : vars({ "--background": "#ffffff" });
+    colorScheme === "light"
+      ? vars({ "--background": "red" })
+      : vars({ "--background": "#000000" });
   return (
     <View style={style}>
-      <View className={"flex-1 bg-background"}>
+      <View className={"flex-1 bg-[--background]"}>
         <DarkModeToggle />
       </View>
     </View>
