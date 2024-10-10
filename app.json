@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "NativewindTheming",
+    "slug": "NativewindTheming",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
