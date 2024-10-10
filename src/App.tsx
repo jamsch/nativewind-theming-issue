@@ -1,32 +1,51 @@
-import { Pressable, Text, View } from "react-native";
-import { useColorScheme, vars } from "nativewind";
+import { Text, View } from "react-native";
+import { vars } from "nativewind";
 import "../global.css";
+import { useState } from "react";
 
 export default function App() {
-  const { colorScheme } = useColorScheme();
-  const style =
-    colorScheme === "light"
-      ? vars({ "--background": "#999999" })
-      : vars({ "--background": "#333333" });
   return (
-    <View style={[style, { flex: 1 }]}>
-      <View className={"flex-1 bg-[--background]"}>
-        <DarkModeToggle />
+    <View className="flex flex-row flex-1 mt-24 gap-4">
+      <NotWorking />
+      <Working />
+    </View>
+  );
+}
+
+function NotWorking() {
+  const [counter, setCounter] = useState(0);
+  const style =
+    counter % 2 === 0
+      ? vars({ "--notworking": "#999999" })
+      : vars({ "--notworking": "#333333" });
+  return (
+    <View style={style}>
+      <View className={"bg-[--notworking] border-2"}>
+        <Text
+          className="text-red-500 text-4xl"
+          onPress={() => setCounter(counter + 1)}
+        >
+          Not working {counter}
+        </Text>
       </View>
     </View>
   );
 }
 
-function DarkModeToggle() {
-  const { colorScheme, toggleColorScheme } = useColorScheme();
+function Working() {
+  const [counter, setCounter] = useState(0);
+  const style =
+    counter % 2 === 0
+      ? vars({ "--working": "#999999" })
+      : vars({ "--working": "#333333" });
   return (
-    <Pressable
-      className={"px-4 h-10 bg-blue-500 items-center justify-center mt-24"}
-      onPress={toggleColorScheme}
-    >
-      <Text className="text-red-500 text-2xl font-bold">
-        {colorScheme || "auto"} mode
+    <View style={style}>
+      <Text
+        onPress={() => setCounter(counter + 1)}
+        className="bg-[--working] text-red-500 text-4xl"
+      >
+        Working {counter}
       </Text>
-    </Pressable>
+    </View>
   );
 }
