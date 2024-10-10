@@ -6,10 +6,10 @@ export default function App() {
   const { colorScheme } = useColorScheme();
   const style =
     colorScheme === "light"
-      ? vars({ "--background": "red" })
-      : vars({ "--background": "#000000" });
+      ? vars({ "--background": "#999999" })
+      : vars({ "--background": "#333333" });
   return (
-    <View style={style}>
+    <View style={[style, { flex: 1 }]}>
       <View className={"flex-1 bg-[--background]"}>
         <DarkModeToggle />
       </View>
